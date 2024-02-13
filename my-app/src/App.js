@@ -5,13 +5,22 @@ import React from 'react';
 
 function App() {
 	return (
+	<>
 		<div>
 			<ul>
-			<li>text1</li>
-			<li>text2</li>
-			<li>text3</li>
-		</ul>;
-		</div>
+		<li>text1</li>
+		<li>text2</li>
+		<li>text3</li>
+	</ul>
+	</div>
+	<div>
+	<ul>
+		<li>text1</li>
+		<li>text2</li>
+		<li>text3</li>
+	</ul>
+	</div>
+	</>
 	);
 }
 
