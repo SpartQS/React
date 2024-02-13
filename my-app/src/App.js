@@ -4,14 +4,10 @@ import './App.css';
 import React from 'react';
 
 function App() {
-	const obj = {name: 'john', surname: 'smit'};
+	const attr = 'block';
 	
-	return <div>
-		<p>
-	name:    <span>{obj.name}</span></p>
-	<p>
-	surname: <span>{obj.surname}</span>
-	</p>
+	return <div id={attr}>
+		text
 	</div>;
 }
 
