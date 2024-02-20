@@ -4,30 +4,19 @@ import './App.css';
 import React from 'react';
 
 function App() {
-  return (
-    <div>
-      <table>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  );
+  const num1 = 3;
+	const num2 = 2;
+  const name = 'john';
+	const surname = 'smit';
+  const num3 = 4;
+	
+	return <div>
+		result: {num1 ** num2} <br></br>
+    result: {name + ' ' + surname} <br></br>
+    result: {Math.sqrt(num3)}
+	</div>;
 }
+
 
 
 export default App;
