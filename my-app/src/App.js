@@ -4,17 +4,18 @@ import './App.css';
 import React from 'react';
 
 function App() {
-  const isAdult = false;
+  const isAdmin = true;
 
-  return (
-    <div>
-      {isAdult ? (
-        <p>Добро пожаловать на сайт для взрослых</p>
-      ) : (
-        <p>Извините, доступ запрещен для несовершеннолетних</p>
-      )}
-    </div>
-  );
+	return (
+		<div>
+			{isAdmin && (
+				<div>
+					<p>Этот пользователь админ!</p>
+					<p>Дополнительная информация для админа.</p>
+				</div>
+			)}
+		</div>
+	);
 }
 
 
