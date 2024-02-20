@@ -4,18 +4,17 @@ import './App.css';
 import React from 'react';
 
 function App() {
-  const isAdmin = true;
+  const age = 19;
 
-	return (
-		<div>
-			{isAdmin && (
-				<div>
-					<p>Этот пользователь админ!</p>
-					<p>Дополнительная информация для админа.</p>
-				</div>
-			)}
-		</div>
-	);
+  return (
+    <div>
+      {age > 18 ? (
+        <p>Пользователь старше 18 лет.</p>
+      ) : (
+        <p>Пользователь младше или равен 18 годам.</p>
+      )}
+    </div>
+  );
 }
 
 
