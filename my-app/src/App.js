@@ -4,11 +4,23 @@ import './App.css';
 import React from 'react';
 
 function App() {
-  const isAuth = false;
+  function getDigitsSum(num) {
+    // Функция для нахождения суммы цифр числа
+    let sum = 0;
+
+    while (num > 0) {
+      sum += num % 10; // Получение последней цифры числа
+      num = Math.floor(num / 10); // Удаление последней цифры числа
+    }
+
+    return sum;
+  }
+
+  const sumOfDigits = getDigitsSum(123);
 
   return (
     <div>
-      {!isAuth && <p>пожалуйста, авторизуйтесь</p>}
+      {sumOfDigits}
     </div>
   );
 }
