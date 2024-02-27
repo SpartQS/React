@@ -3,28 +3,20 @@ import './App.css';
 
 import React from 'react';
 
-/*function App() {
-  function func(arg, event) {
-    console.log(arg, event);
-  }
-  
-  return (
-    <div>
-      <button onClick={(event) => func('eee', event)}>act</button>
-    </div>
-  );
-  }*/
+function App() {
+  const arr = [
+    <li>1</li>,
+    <li>2</li>,
+    <li>3</li>,
+    <li>4</li>,
+    <li>5</li>,
+  ];
 
-  function App() {
-    function func(event, arg) {
-      console.log(event, arg);
-    }
-    
-    return (
-      <div>
-        <button onClick={(event) => func(event, 'eee')}>act</button>
-      </div>
-    );
-  }
+  return (
+    <ul>
+      {arr}
+    </ul>
+  );
+}
 
 export default App;
