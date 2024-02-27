@@ -4,18 +4,25 @@ import './App.css';
 import React from 'react';
 
 function App() {
-  const arr = ['a', 'b', 'c', 'd', 'e'];
+  const users = [
+    { name: 'user1', surn: 'surn1', age: 30 },
+    { name: 'user2', surn: 'surn2', age: 31 },
+    { name: 'user3', surn: 'surn3', age: 32 },
+  ];
 
-  const res = arr.map(function (item, index) {
-    return <li key={index}>{item}</li>;
+  const userList = users.map(function (user, index) {
+    return (
+      <li key={index}>
+        <span>{user.name}</span>:
+        <span>{user.surn}</span>,
+        <span>{user.age}</span>
+      </li>
+    );
   });
 
-  return (
-    <ul>
-      {res}
-    </ul>
-  );
+  return <ul>{userList}</ul>;
 }
+
 
 
 
