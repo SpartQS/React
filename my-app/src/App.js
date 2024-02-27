@@ -4,18 +4,19 @@ import './App.css';
 import React from 'react';
 
 function App() {
-  const arr = [];
+  const arr = ['a', 'b', 'c', 'd', 'e'];
 
-  for (let i = 1; i <= 5; i++) {
-    arr.push(<li>{i}</li>);
-  }
+  const res = arr.map(function (item) {
+    return <li>{item}</li>;
+  });
 
   return (
     <ul>
-      {arr}
+      {res}
     </ul>
   );
 }
+
 
 
 export default App;
