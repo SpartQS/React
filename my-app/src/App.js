@@ -10,17 +10,31 @@ function App() {
     { id: 3, name: 'user3', surn: 'surn3', age: 32 },
   ];
 
-  const userList = users.map(function (user) {
+  const rows = users.map(function (user) {
     return (
-      <li key={user.id}>
-        <span>{user.name}</span>:
-        <span>{user.surn}</span>,
-        <span>{user.age}</span>
-      </li>
+      <tr key={user.id}>
+        <td>{user.id}</td>
+        <td>{user.name}</td>
+        <td>{user.surn}</td>
+        <td>{user.age}</td>
+      </tr>
     );
   });
 
-  return <ul>{userList}</ul>;
+  return (
+    <table>
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>Name</td>
+          <td>Surname</td>
+          <td>Age</td>
+        </tr>
+      </thead>
+      <tbody>{rows}</tbody>
+    </table>
+  );
 }
+
 
 export default App;
