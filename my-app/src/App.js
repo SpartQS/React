@@ -5,7 +5,7 @@ import React from 'react';
 
 function App() {
   function handleClick(event) {
-    console.log(event);
+    console.log(event.target);
   }
 
   return (
