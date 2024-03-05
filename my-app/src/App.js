@@ -1,18 +1,34 @@
+/*import React, { useState } from 'react';
+
+function App() {
+  const [isBanned, setBanned] = useState(false);
+
+  return (
+    <div>
+      <span>{isBanned ? 'Пользователь забанен' : 'Пользователь не забанен'}</span>
+      <button onClick={() => setBanned(true)}>Забанить пользователя</button>
+      <button onClick={() => setBanned(false)}>Разбанить пользователя</button>
+    </div>
+  );
+}
+
+export default App;*/
+
 import React, { useState } from 'react';
 
 function App() {
-  const [firstName, setFirstName] = useState('John');
-  const [lastName, setLastName] = useState('Doe');
-  const [age, setAge] = useState(30);
+  const [isBanned, setBanned] = useState(false);
 
-  return <div>
-    <span>{firstName}</span>
-    <button onClick={() => setFirstName('xxxx')}>btn</button>
-    <span>{lastName}</span>
-    <button onClick={() => setLastName('xxxx')}>btn</button>
-    <span>{age}</span>
-    <button onClick={() => setAge('xxxx')}>btn</button>
-  </div>;
+  return (
+    <div>
+      <span>{isBanned ? 'Пользователь забанен' : 'Пользователь не забанен'}</span>
+      {isBanned ? (
+        <button onClick={() => setBanned(false)}>Разбанить пользователя</button>
+      ) : (
+        <button onClick={() => setBanned(true)}>Забанить пользователя</button>
+      )}
+    </div>
+  );
 }
 
 export default App;
