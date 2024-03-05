@@ -1,20 +1,30 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
-import { v4 as uuid } from 'uuid';
 
 function App() {
   function id() {
-    const x = nanoid();
-    const y = uuid();
-    return [x, y]; // Возвращаем массив с обоими значениями
+    return nanoid();
   }
 
-  const [x, y] = id(); // Деструктурируем массив после вызова функции
+  const users = [
+    { id: id(), name: 'User1', age: 25 },
+    { id: id(), name: 'User2', age: 30 },
+    { id: id(), name: 'User3', age: 22 },
+  ];
 
   return (
     <div>
-      <p>Сгенерированный nanoid: {x}</p>
-      <p>Сгенерированный UUID: {y}</p>
+      <h2>Информация о пользователях:</h2>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            <p>ID: {user.id}</p>
+            <p>Name: {user.name}</p>
+            <p>Age: {user.age}</p>
+            <hr />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
