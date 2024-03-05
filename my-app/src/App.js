@@ -1,40 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
 import React from 'react';
+import { nanoid } from 'nanoid';
+import { v4 as uuid } from 'uuid';
 
 function App() {
-  const users = [
-    { id: 1, name: 'user1', surn: 'surn1', age: 30 },
-    { id: 2, name: 'user2', surn: 'surn2', age: 31 },
-    { id: 3, name: 'user3', surn: 'surn3', age: 32 },
-  ];
+  function id() {
+    const x = nanoid();
+    const y = uuid();
+    return [x, y]; // Возвращаем массив с обоими значениями
+  }
 
-  const rows = users.map(function (user) {
-    return (
-      <tr key={user.id}>
-        <td>{user.id}</td>
-        <td>{user.name}</td>
-        <td>{user.surn}</td>
-        <td>{user.age}</td>
-      </tr>
-    );
-  });
+  const [x, y] = id(); // Деструктурируем массив после вызова функции
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <td>ID</td>
-          <td>Name</td>
-          <td>Surname</td>
-          <td>Age</td>
-        </tr>
-      </thead>
-      <tbody>{rows}</tbody>
-    </table>
+    <div>
+      <p>Сгенерированный nanoid: {x}</p>
+      <p>Сгенерированный UUID: {y}</p>
+    </div>
   );
 }
-
 
 export default App;
