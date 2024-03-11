@@ -1,113 +1,63 @@
-/*import React, { useState } from 'react';
-
-function App() {
-  const [value1, setValue1] = useState(0);
-  const [value2, setValue2] = useState(0);
-  const [sumResult, setSumResult] = useState(0);
-  const [multiplyResult, setMultiplyResult] = useState(0);
-
-  return (
-    <div>
-      <input value={value1} onChange={event => setValue1(event.target.value)} />
-      <input value={value2} onChange={event => setValue2(event.target.value)} />
-
-      <button onClick={() => setSumResult(Number(value1) + Number(value2))}>Sum</button>
-      <button onClick={() => setMultiplyResult(Number(value1) * Number(value2))}>Multiply</button>
-
-      <p>Sum Result: {sumResult}</p>
-      <p>Multiply Result: {multiplyResult}</p>
-    </div>
-  );
-}
-
-export default App;*/
-
-/*import React, { useState } from 'react';
-
-function App() {
-  const currentDate = new Date().toISOString().split('T')[0];
-  const [date1, setDate1] = useState(currentDate);
-  const [date2, setDate2] = useState(currentDate);
-  const [daysDifference, setDaysDifference] = useState(0);
-
-  return (
-    <div>
-      <input value={date1} onChange={event => setDate1(event.target.value)} />
-      <input value={date2} onChange={event => setDate2(event.target.value)} />
-
-      <button onClick={() => setDaysDifference(calculateDaysDifference(date1, date2))}>
-        Calculate Days Difference
-      </button>
-
-      <p>Days Difference: {daysDifference}</p>
-    </div>
-  );
-}
-
-function calculateDaysDifference(date1, date2) {
-  const millisecondsPerDay = 24 * 60 * 60 * 1000;
-  const differenceInMilliseconds = Math.abs(new Date(date1) - new Date(date2));
-  return Math.round(differenceInMilliseconds / millisecondsPerDay);
-}
-
-export default App;*/
-
-/*import React, { useState } from 'react';
-
-function App() {
-  const [number, setNumber] = useState('');
-  const [sumOfDigits, setSumOfDigits] = useState(0);
-
-  function handleBlur() {
-    const digits = number.toString().split('').map(Number);
-    const sum = digits.reduce((acc, digit) => acc + digit, 0);
-    setSumOfDigits(sum);
-  }
-
-  return (
-    <div>
-      <input value={number} onChange={event => setNumber(event.target.value)} onBlur={handleBlur} />
-      <p>Sum of Digits: {sumOfDigits}</p>
-    </div>
-  );
-}
-
-export default App;*/
-
 import React, { useState } from 'react';
 
 function App() {
-  const [number, setNumber] = useState('');
-  const [productOfDivisors, setProductOfDivisors] = useState(1);
+  const [text, setText] = useState('');
 
-  function handleBlur() {
-    const parsedNumber = parseInt(number, 10);
-    if (!isNaN(parsedNumber) && parsedNumber !== 0) {
-      const divisors = getDivisors(parsedNumber);
-      const product = divisors.reduce((acc, divisor) => acc * divisor, 1);
-      setProductOfDivisors(product);
-    } else {
-      setProductOfDivisors(0);
-    }
+  function handleChange(event) {
+    setText(event.target.value);
   }
 
-  function getDivisors(n) {
-    const divisors = [];
-    for (let i = 1; i <= n; i++) {
-      if (n % i === 0) {
-        divisors.push(i);
-      }
-    }
-    return divisors;
+  function transliterate(text) {
+    const transliterationMap = {
+      а: 'a', б: 'b', в: 'v', г: 'g', д: 'd', е: 'e', ё: 'e', ж: 'zh', з: 'z', и: 'i',
+      й: 'y', к: 'k', л: 'l', м: 'm', н: 'n', о: 'o', п: 'p', р: 'r', с: 's', т: 't',
+      у: 'u', ф: 'f', х: 'kh', ц: 'ts', ч: 'ch', ш: 'sh', щ: 'sch', ы: 'y', э: 'e',
+      ю: 'yu', я: 'ya', А: 'A', Б: 'B', В: 'V', Г: 'G', Д: 'D', Е: 'E', Ё: 'E', Ж: 'Zh',
+      З: 'Z', И: 'I', Й: 'Y', К: 'K', Л: 'L', М: 'M', Н: 'N', О: 'O', П: 'P', Р: 'R',
+      С: 'S', Т: 'T', У: 'U', Ф: 'F', Х: 'Kh', Ц: 'Ts', Ч: 'Ch', Ш: 'Sh', Щ: 'Sch',
+      Ы: 'Y', Э: 'E', Ю: 'Yu', Я: 'Ya'
+    };
+
+    return text.split('').map(char => transliterationMap[char] || char).join('');
   }
+
+  const transliteratedText = transliterate(text);
 
   return (
     <div>
-      <input value={number} onChange={event => setNumber(event.target.value)} onBlur={handleBlur} />
-      <p>Product of Divisors: {productOfDivisors}</p>
+      <textarea value={text} onChange={handleChange} />
+      <p>Transliteration: {transliteratedText}</p>
     </div>
   );
 }
 
 export default App;
+
+/*import React, { useState } from 'react';
+
+function App() {
+  const [numbers, setNumbers] = useState('');
+
+  function handleChange(event) {
+    setNumbers(event.target.value);
+  }
+
+  function calculateSum() {
+    const sum = numbers.split('\n').reduce((acc, line) => {
+      const currentNumber = parseFloat(line);
+      return isNaN(currentNumber) ? acc : acc + currentNumber;
+    }, 0);
+
+    return sum;
+  }
+
+  return (
+    <div>
+      <textarea value={numbers} onChange={handleChange} />
+      <p>Sum of Numbers: {calculateSum()}</p>
+    </div>
+  );
+}
+
+export default App;*/
 
