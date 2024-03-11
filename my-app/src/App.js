@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 
 function App() {
+  const cities = ['Москва', 'Лондон', 'Нью-Йорк', 'Токио'];
   const [selectedCity, setSelectedCity] = useState('');
 
-  function handleChange(event) {
-    setSelectedCity(event.target.value);
-  }
+  const cityOptions = cities.map((city, index) => {
+    return <option key={index}>{city}</option>;
+  });
 
   return (
     <div>
-      <select value={selectedCity} onChange={handleChange}>
+      <select value={selectedCity} onChange={(event) => setSelectedCity(event.target.value)}>
         <option value="">Выберите город</option>
-        <option value="moscow">Москва</option>
-        <option value="london">Лондон</option>
-        <option value="new-york">Нью-Йорк</option>
-        <option value="tokyo">Токио</option>
+        {cityOptions}
       </select>
       <p>Ваш выбор: {selectedCity || 'не выбран'}</p>
     </div>
