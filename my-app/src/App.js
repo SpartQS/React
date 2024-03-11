@@ -1,52 +1,44 @@
-/*import React, { useState } from 'react';
-
-function App() {
-  const [age, setAge] = useState('');
-
-  function handleChange(event) {
-    setAge(event.target.value);
-  }
-
-  function calculateBirthYear() {
-    const currentYear = new Date().getFullYear();
-    const birthYear = currentYear - parseInt(age, 10);
-    return isNaN(birthYear) ? 'Invalid input' : birthYear;
-  }
-
-  return (
-    <div>
-      <label>Enter Age: </label>
-      <input value={age} onChange={handleChange} />
-      <p>Birth Year: {calculateBirthYear()}</p>
-    </div>
-  );
-}
-
-export default App;*/
-
 import React, { useState } from 'react';
 
 function App() {
-  const [fahrenheit, setFahrenheit] = useState('');
+  const [value1, setValue1] = useState(0);
+  const [value2, setValue2] = useState(0);
+  const [value3, setValue3] = useState(0);
+  const [value4, setValue4] = useState(0);
+  const [value5, setValue5] = useState(0);
 
-  function handleChange(event) {
-    setFahrenheit(event.target.value);
+  function handleChange1(event) {
+    setValue1(+event.target.value);
   }
 
-  function convertToCelsius() {
-    const fahrenheitValue = parseFloat(fahrenheit);
-    const celsiusValue = (fahrenheitValue - 32) * (5 / 9);
-    return isNaN(celsiusValue) ? 'Invalid input' : celsiusValue.toFixed(2);
+  function handleChange2(event) {
+    setValue2(+event.target.value);
   }
+
+  function handleChange3(event) {
+    setValue3(+event.target.value);
+  }
+
+  function handleChange4(event) {
+    setValue4(+event.target.value);
+  }
+
+  function handleChange5(event) {
+    setValue5(+event.target.value);
+  }
+
+  const average = (value1 + value2 + value3 + value4 + value5) / 5;
 
   return (
     <div>
-      <label>Enter Fahrenheit: </label>
-      <input value={fahrenheit} onChange={handleChange} />
-      <p>Celsius: {convertToCelsius()}</p>
+      <input value={value1} onChange={handleChange1} />
+      <input value={value2} onChange={handleChange2} />
+      <input value={value3} onChange={handleChange3} />
+      <input value={value4} onChange={handleChange4} />
+      <input value={value5} onChange={handleChange5} />
+      <p>Average: {average}</p>
     </div>
   );
 }
 
 export default App;
-
