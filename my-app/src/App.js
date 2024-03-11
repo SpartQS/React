@@ -1,51 +1,45 @@
-/*import React, { useState } from 'react';
+import React, { useState } from 'react';
 
 function App() {
-  const [isChecked, setChecked] = useState(false);
+  const [isOver18, setIsOver18] = useState(false);
 
-  function handleClick() {
-    alert(isChecked ? 'Привет, пользователь!' : 'До свидания!');
+  let content;
+  if (isOver18) {
+    content = (
+      <div>
+        <h2>Ура, вам уже есть 18</h2>
+        <p>здесь расположен контент только для взрослых</p>
+      </div>
+    );
+  } else {
+    content = (
+      <div>
+        <p>увы, вам еще нет 18 лет:(</p>
+      </div>
+    );
   }
 
   return (
     <div>
-      <input type="checkbox" checked={isChecked} onChange={() => setChecked(!isChecked)} />
-      <button onClick={handleClick}>Показать приветствие/прощание</button>
-      <p>Состояние: {isChecked ? 'отмечен' : 'не отмечен'}</p>
-    </div>
-  );
-}
-
-export default App;*/
-
-import React, { useState } from 'react';
-
-function App() {
-  const [htmlChecked, setHtmlChecked] = useState(false);
-  const [cssChecked, setCssChecked] = useState(false);
-  const [jsChecked, setJsChecked] = useState(false);
-
-  return (
-    <div>
-      <label>
-        <input type="checkbox" checked={htmlChecked} onChange={() => setHtmlChecked(!htmlChecked)} />
-        HTML
-      </label>
-      <p>HTML: {htmlChecked ? 'знает' : 'не знает'}</p>
-
-      <label>
-        <input type="checkbox" checked={cssChecked} onChange={() => setCssChecked(!cssChecked)} />
-        CSS
-      </label>
-      <p>CSS: {cssChecked ? 'знает' : 'не знает'}</p>
-
-      <label>
-        <input type="checkbox" checked={jsChecked} onChange={() => setJsChecked(!jsChecked)} />
-        JavaScript
-      </label>
-      <p>JavaScript: {jsChecked ? 'знает' : 'не знает'}</p>
+      <input type="checkbox" checked={isOver18} onChange={() => setIsOver18(!isOver18)} />
+      {content}
     </div>
   );
 }
 
 export default App;
+
+/*import React, { useState } from 'react';
+
+function App() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  return (
+    <div>
+      <input type="checkbox" checked={isVisible} onChange={() => setIsVisible(!isVisible)} />
+      {isVisible && <p>Этот абзац видимый</p>}
+    </div>
+  );
+}
+
+export default App;*/
