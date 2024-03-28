@@ -1,18 +1,24 @@
 /*import React, { useState } from 'react';
 
 function App() {
-    const [numbers, setNumbers] = useState([1, 2, 3, 4, 5]);
+    const [notes, setNotes] = useState(initNotes);
 
-    const squareNumber = index => {
-        const copy = [...numbers];
-        copy[index] = copy[index] ** 2;
-        setNumbers(copy);
+    const addNote = () => {
+        const newNote = {
+            id: Math.random().toString(36).substr(2, 9), // Генерируем случайный id
+            prop1: 'NewValue1',
+            prop2: 'NewValue2',
+            prop3: 'NewValue3',
+        };
+        setNotes([...notes, newNote]);
     };
 
-    const result = numbers.map((number, index) => {
+    const result = notes.map(note => {
         return (
-            <li key={index} onClick={() => squareNumber(index)}>
-                {number}
+            <li key={note.id}>
+                <span>{note.prop1}</span>
+                <span>{note.prop2}</span>
+                <span>{note.prop3}</span>
             </li>
         );
     });
@@ -20,41 +26,7 @@ function App() {
     return (
         <div>
             <ul>{result}</ul>
-        </div>
-    );
-}
-
-export default App;*/
-
-/*import React, { useState } from 'react';
-
-function App() {
-    const [numbers, setNumbers] = useState([1, 2, 3, 4, 5]);
-
-    const squareNumber = index => {
-        const copy = [...numbers];
-        copy[index] = copy[index] ** 2;
-        setNumbers(copy);
-    };
-
-    const removeNumber = index => {
-        const copy = [...numbers];
-        copy.splice(index, 1);
-        setNumbers(copy);
-    };
-
-    const result = numbers.map((number, index) => {
-        return (
-            <li key={index} onClick={() => squareNumber(index)}>
-                {number}
-                <button onClick={() => removeNumber(index)}>Удалить</button>
-            </li>
-        );
-    });
-
-    return (
-        <div>
-            <ul>{result}</ul>
+            <button onClick={addNote}>Добавить элемент</button>
         </div>
     );
 }
@@ -62,93 +34,60 @@ function App() {
 export default App;
 */
 
-/*import React, { useState } from 'react';
+import React, { useState } from 'react';
 
 function App() {
-    const [numbers, setNumbers] = useState([1, 2, 3, 4, 5]);
-    const [selectedNumber, setSelectedNumber] = useState('');
+    const [notes, setNotes] = useState(initNotes);
+    const [prop1, setProp1] = useState('');
+    const [prop2, setProp2] = useState('');
+    const [prop3, setProp3] = useState('');
 
-    const handleChange = event => {
-        setSelectedNumber(event.target.textContent);
+    const addNoteFromInputs = () => {
+        const newNote = {
+            id: Math.random().toString(36).substr(2, 9),
+            prop1: prop1,
+            prop2: prop2,
+            prop3: prop3,
+        };
+        setNotes([...notes, newNote]);
+        setProp1('');
+        setProp2('');
+        setProp3('');
     };
-
-    const result = numbers.map((number, index) => {
-        return (
-            <li key={index} onClick={handleChange}>
-                {number}
-            </li>
-        );
-    });
 
     return (
         <div>
-            <input type="text" value={selectedNumber} readOnly />
-            <ul>{result}</ul>
+            <input
+                type="text"
+                value={prop1}
+                onChange={e => setProp1(e.target.value)}
+                placeholder="prop1"
+            />
+            <input
+                type="text"
+                value={prop2}
+                onChange={e => setProp2(e.target.value)}
+                placeholder="prop2"
+            />
+            <input
+                type="text"
+                value={prop3}
+                onChange={e => setProp3(e.target.value)}
+                placeholder="prop3"
+            />
+            <button onClick={addNoteFromInputs}>Добавить элемент из инпутов</button>
+
+            <ul>
+                {notes.map(note => (
+                    <li key={note.id}>
+                        <span>{note.prop1}</span>
+                        <span>{note.prop2}</span>
+                        <span>{note.prop3}</span>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 }
 
 export default App;
-*/
-
-/*import React, { useState } from 'react';
-
-function App() {
-    const [numbers, setNumbers] = useState([1, 2, 3, 4, 5]);
-    const [selectedNumber, setSelectedNumber] = useState('');
-
-    const handleChange = event => {
-        setSelectedNumber(event.target.textContent);
-    };
-
-    const handleBlur = event => {
-        const copy = [...numbers];
-        const index = copy.indexOf(selectedNumber);
-        if (index !== -1) {
-            copy[index] = event.target.value;
-            setNumbers(copy);
-        }
-    };
-
-    const result = numbers.map((number, index) => {
-        return (
-            <li key={index} onClick={handleChange}>
-                {number}
-            </li>
-        );
-    });
-
-    return (
-        <div>
-            <input type="text" value={selectedNumber} onBlur={handleBlur} />
-            <ul>{result}</ul>
-        </div>
-    );
-}
-
-export default App;
-*/
-
-/*import React, { useState } from 'react';
-
-function App() {
-    const [numbers, setNumbers] = useState([1, 2, 3, 4, 5]);
-
-    const reverseNumbers = () => {
-        setNumbers([...numbers].reverse());
-    };
-
-    const result = numbers.map((number, index) => {
-        return <li key={index}>{number}</li>;
-    });
-
-    return (
-        <div>
-            <ul>{result}</ul>
-            <button onClick={reverseNumbers}>Перевернуть порядок</button>
-        </div>
-    );
-}
-
-export default App;
-*/
