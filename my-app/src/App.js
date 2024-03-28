@@ -1,23 +1,78 @@
-import React, { useState } from 'react';
+/*import React, { useState } from 'react';
 
-function App() {
-  const [ageGroup, setAgeGroup] = useState('');
+export function App() {
+  const [value, setValue] = useState(1);
+
+  function changeHandler(event) {
+    setValue(event.target.value);
+  }
 
   return (
     <div>
-      <select value={ageGroup} onChange={(event) => setAgeGroup(event.target.value)}>
-        <option value="">Выберите возрастную группу</option>
-        <option value="0-12">От 0 до 12 лет</option>
-        <option value="13-17">От 13 до 17 лет</option>
-        <option value="18-25">От 18 до 25 лет</option>
-        <option value="25+">Старше 25 лет</option>
-      </select>
-      <p>
-        {ageGroup === '0-12' && 'Вы выбрали возрастную группу от 0 до 12 лет'}
-        {ageGroup === '13-17' && 'Вы выбрали возрастную группу от 13 до 17 лет'}
-        {ageGroup === '18-25' && 'Вы выбрали возрастную группу от 18 до 25 лет'}
-        {ageGroup === '25+' && 'Вы выбрали возрастную группу старше 25 лет'}
-      </p>
+      <input
+        type="radio"
+        name="radio"
+        value="1"
+        checked={value === "1" ? true : false}
+        onChange={changeHandler}
+      />
+      <input
+        type="radio"
+        name="radio"
+        value="2"
+        checked={value === "2" ? true : false}
+        onChange={changeHandler}
+      />
+      <input
+        type="radio"
+        name="radio"
+        value="3"
+        checked={value === "3" ? true : false}
+        onChange={changeHandler}
+      />
+      <p>{value}</p>
+    </div>
+  );
+}
+
+export default App;*/
+
+import React, { useState } from 'react';
+
+export function App() {
+  const [value, setValue] = useState('1');
+  const [selectedLanguage, setSelectedLanguage] = useState('');
+
+  function changeHandler(event) {
+    const language = event.target.value;
+    setValue(language);
+    setSelectedLanguage(language === 'JavaScript' ? 'You have great taste!' : '');
+  }
+
+  return (
+    <div>
+      <input
+        type="radio"
+        name="radio"
+        value="JavaScript"
+        checked={value === 'JavaScript' ? true : false}
+        onChange={changeHandler}
+      />
+      <input
+        type="radio"
+        name="radio"
+        value="Python"
+        checked={value === 'Python' ? true : false}
+        onChange={changeHandler}
+      />
+      <input
+        type="radio"
+        name="radio"
+        value="Java"
+        checked={value === 'Java' ? true : false}
+        onChange={changeHandler}
+      />
+      <p>Your favorite programming language is: {selectedLanguage || value}</p>
     </div>
   );
 }
