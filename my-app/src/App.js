@@ -1,67 +1,154 @@
 /*import React, { useState } from 'react';
 
 function App() {
-    const [notes, setNotes] = useState([1, 2, 3, 4, 5]);
+    const [numbers, setNumbers] = useState([1, 2, 3, 4, 5]);
 
-    const addNote = () => {
-        // Создаем новый массив, добавляя новый элемент в конец
-        const newNote = notes.concat(notes.length + 1);
-        // Обновляем состояние массива
-        setNotes(newNote);
+    const squareNumber = index => {
+        const copy = [...numbers];
+        copy[index] = copy[index] ** 2;
+        setNumbers(copy);
     };
 
-    const result = notes.map((note, index) => {
-        return <li key={index}>{note}</li>;
+    const result = numbers.map((number, index) => {
+        return (
+            <li key={index} onClick={() => squareNumber(index)}>
+                {number}
+            </li>
+        );
     });
 
     return (
         <div>
             <ul>{result}</ul>
-            <button onClick={addNote}>Добавить элемент</button>
         </div>
     );
 }
 
 export default App;*/
 
-import React, { useState } from 'react';
+/*import React, { useState } from 'react';
 
 function App() {
-    const [notes, setNotes] = useState([1, 2, 3, 4, 5]);
-    const [newNoteText, setNewNoteText] = useState('');
+    const [numbers, setNumbers] = useState([1, 2, 3, 4, 5]);
 
-    const addNote = () => {
-        if (newNoteText.trim() !== '') { // Проверяем, что текст не пустой
-            // Создаем новый массив, добавляя новый элемент в конец
-            const newNote = notes.concat(newNoteText);
-            // Обновляем состояние массива
-            setNotes(newNote);
-            // Очищаем текстовое поле
-            setNewNoteText('');
-        }
+    const squareNumber = index => {
+        const copy = [...numbers];
+        copy[index] = copy[index] ** 2;
+        setNumbers(copy);
     };
 
-    const handleChange = event => {
-        // Обновляем состояние текста новой заметки
-        setNewNoteText(event.target.value);
+    const removeNumber = index => {
+        const copy = [...numbers];
+        copy.splice(index, 1);
+        setNumbers(copy);
     };
 
-    const result = notes.map((note, index) => {
-        return <li key={index}>{note}</li>;
+    const result = numbers.map((number, index) => {
+        return (
+            <li key={index} onClick={() => squareNumber(index)}>
+                {number}
+                <button onClick={() => removeNumber(index)}>Удалить</button>
+            </li>
+        );
     });
 
     return (
         <div>
             <ul>{result}</ul>
-            <input
-                type="text"
-                value={newNoteText}
-                onChange={handleChange}
-                placeholder="Введите текст заметки"
-            />
-            <button onClick={addNote}>Добавить элемент</button>
         </div>
     );
 }
 
 export default App;
+*/
+
+/*import React, { useState } from 'react';
+
+function App() {
+    const [numbers, setNumbers] = useState([1, 2, 3, 4, 5]);
+    const [selectedNumber, setSelectedNumber] = useState('');
+
+    const handleChange = event => {
+        setSelectedNumber(event.target.textContent);
+    };
+
+    const result = numbers.map((number, index) => {
+        return (
+            <li key={index} onClick={handleChange}>
+                {number}
+            </li>
+        );
+    });
+
+    return (
+        <div>
+            <input type="text" value={selectedNumber} readOnly />
+            <ul>{result}</ul>
+        </div>
+    );
+}
+
+export default App;
+*/
+
+/*import React, { useState } from 'react';
+
+function App() {
+    const [numbers, setNumbers] = useState([1, 2, 3, 4, 5]);
+    const [selectedNumber, setSelectedNumber] = useState('');
+
+    const handleChange = event => {
+        setSelectedNumber(event.target.textContent);
+    };
+
+    const handleBlur = event => {
+        const copy = [...numbers];
+        const index = copy.indexOf(selectedNumber);
+        if (index !== -1) {
+            copy[index] = event.target.value;
+            setNumbers(copy);
+        }
+    };
+
+    const result = numbers.map((number, index) => {
+        return (
+            <li key={index} onClick={handleChange}>
+                {number}
+            </li>
+        );
+    });
+
+    return (
+        <div>
+            <input type="text" value={selectedNumber} onBlur={handleBlur} />
+            <ul>{result}</ul>
+        </div>
+    );
+}
+
+export default App;
+*/
+
+/*import React, { useState } from 'react';
+
+function App() {
+    const [numbers, setNumbers] = useState([1, 2, 3, 4, 5]);
+
+    const reverseNumbers = () => {
+        setNumbers([...numbers].reverse());
+    };
+
+    const result = numbers.map((number, index) => {
+        return <li key={index}>{number}</li>;
+    });
+
+    return (
+        <div>
+            <ul>{result}</ul>
+            <button onClick={reverseNumbers}>Перевернуть порядок</button>
+        </div>
+    );
+}
+
+export default App;
+*/
