@@ -1,53 +1,67 @@
+/*import React, { useState } from 'react';
+
+function App() {
+    const [notes, setNotes] = useState([1, 2, 3, 4, 5]);
+
+    const addNote = () => {
+        // Создаем новый массив, добавляя новый элемент в конец
+        const newNote = notes.concat(notes.length + 1);
+        // Обновляем состояние массива
+        setNotes(newNote);
+    };
+
+    const result = notes.map((note, index) => {
+        return <li key={index}>{note}</li>;
+    });
+
+    return (
+        <div>
+            <ul>{result}</ul>
+            <button onClick={addNote}>Добавить элемент</button>
+        </div>
+    );
+}
+
+export default App;*/
+
 import React, { useState } from 'react';
 
 function App() {
-  const [date, setDate] = useState({
-      year: 2025,
-      month: 12,
-      day: 31
-  });
+    const [notes, setNotes] = useState([1, 2, 3, 4, 5]);
+    const [newNoteText, setNewNoteText] = useState('');
 
-  // Функция для изменения даты
-  function handleChange(prop, event) {
-      const newValue = parseInt(event.target.value);
-      if (!isNaN(newValue)) {
-          setDate(prevDate => ({
-              ...prevDate,
-              [prop]: newValue
-          }));
-      }
-  }
+    const addNote = () => {
+        if (newNoteText.trim() !== '') { // Проверяем, что текст не пустой
+            // Создаем новый массив, добавляя новый элемент в конец
+            const newNote = notes.concat(newNoteText);
+            // Обновляем состояние массива
+            setNotes(newNote);
+            // Очищаем текстовое поле
+            setNewNoteText('');
+        }
+    };
 
-  // Функция для получения дня недели
-  function getDayOfWeek(year, month, day) {
-      const date = new Date(year, month - 1, day);
-      const options = { weekday: 'long' };
-      return new Intl.DateTimeFormat('en-US', options).format(date);
-  }
+    const handleChange = event => {
+        // Обновляем состояние текста новой заметки
+        setNewNoteText(event.target.value);
+    };
 
-  const { year, month, day } = date;
-  const dayOfWeek = getDayOfWeek(year, month, day);
+    const result = notes.map((note, index) => {
+        return <li key={index}>{note}</li>;
+    });
 
-  return (
-      <div>
-          <input
-              type="number"
-              value={year}
-              onChange={event => handleChange('year', event)}
-          />
-          <input
-              type="number"
-              value={month}
-              onChange={event => handleChange('month', event)}
-          />
-          <input
-              type="number"
-              value={day}
-              onChange={event => handleChange('day', event)}
-          />
-          <p>Day of the week: {dayOfWeek}</p>
-      </div>
-  );
+    return (
+        <div>
+            <ul>{result}</ul>
+            <input
+                type="text"
+                value={newNoteText}
+                onChange={handleChange}
+                placeholder="Введите текст заметки"
+            />
+            <button onClick={addNote}>Добавить элемент</button>
+        </div>
+    );
 }
 
 export default App;
